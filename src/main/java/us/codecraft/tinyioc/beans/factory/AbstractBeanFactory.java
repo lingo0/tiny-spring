@@ -34,19 +34,36 @@ public abstract class AbstractBeanFactory implements BeanFactory {
 		}
 		Object bean = beanDefinition.getBean();
 		if (bean == null) {
+			// 实例化 Bean
 			bean = doCreateBean(beanDefinition);
+			// 初始化 Bean
             bean = initializeBean(bean, name);
+            // 装载 Bean
             beanDefinition.setBean(bean);
 		}
 		return bean;
 	}
 
+	/**
+	 * 初始化Bean
+	 *
+	 * @param bean
+	 * @param name
+	 * @return
+	 * @throws Exception
+	 */
 	protected Object initializeBean(Object bean, String name) throws Exception {
+		// 从 BeanPostProcessor 列表中，依次取出 BeanPostProcessor 执行
+		//（为什么调用 BeanPostProceesor 中提供方法时，不是直接 post...(bean,beanName) 而是 bean = post...(bean,beanName) 呢？见分析1 。
+		// 另外，BeanPostProcessor 列表的获取有问题，见分析2。）
 		for (BeanPostProcessor beanPostProcessor : beanPostProcessors) {
 			bean = beanPostProcessor.postProcessBeforeInitialization(bean, name);
 		}
 
 		// TODO:call initialize method
+		// 初始化方法（tiny-spring 未实现对初始化方法的支持）。
+
+		//从 BeanPostProcessor 列表中， 依次取出 BeanPostProcessor 执行其 bean = postProcessAfterInitialization(bean,beanName)。
 		for (BeanPostProcessor beanPostProcessor : beanPostProcessors) {
             bean = beanPostProcessor.postProcessAfterInitialization(bean, name);
 		}
@@ -70,8 +87,12 @@ public abstract class AbstractBeanFactory implements BeanFactory {
 	}
 
 	protected Object doCreateBean(BeanDefinition beanDefinition) throws Exception {
+		// 生成一个新的实例
 		Object bean = createBeanInstance(beanDefinition);
 		beanDefinition.setBean(bean);
+		// 注入属性，包括依赖注入的过程。
+		// 在依赖注入的过程中，如果 Bean 实现了 BeanFactoryAware 接口，则将容器的引用传入到 Bean 中去，
+		// 这样，Bean 将获取对容器操作的权限，也就允许了 编写扩展 IoC 容器的功能的 Bean。
 		applyPropertyValues(bean, beanDefinition);
 		return bean;
 	}
