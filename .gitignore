@@ -1,0 +1,64 @@
+# Created by .ignore support plugin (hsz.mobi)
+# idea specific git ignore
+*.war
+*.ear
+*.class
+.idea/**/*
+.idea/*
+/**/*.iml
+CATALINA_APPLOG_IS_UNDEFINED/**/*
+CATALINA_APPLOG_IS_UNDEFINED/*
+target/
+data/
+*.data
+/**/*.data
+discoverclient/
+
+# eclipse specific git ignore
+*.pydevproject
+.project
+.metadata
+tmp/**
+tmp/**/*
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.classpath
+.settings/
+.loadpath
+
+# maven ignore
+target/
+*.jar
+*.war
+*.zip
+*.tar
+*.tar.gz
+
+# idea ignore
+.idea/
+*.ipr
+*.iml
+*.iws
+
+# temp ignore
+logs/
+*.log
+*.cache
+*.diff
+*.patch
+*.tmp
+*.swp
+
+# system ignore
+.DS_Store
+Thumbs.db
+
+# External tools builders
+.externalToolBuilders/
+
+# Locally stored "Eclipse launch configurations"
+*.launch
+web/CATALINA_APPLOG_IS_UNDEFINED/
