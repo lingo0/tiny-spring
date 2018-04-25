@@ -4,7 +4,6 @@
 *.ear
 *.class
 .idea/**/*
-.idea/*
 /**/*.iml
 CATALINA_APPLOG_IS_UNDEFINED/**/*
 CATALINA_APPLOG_IS_UNDEFINED/*
@@ -30,9 +29,7 @@ local.properties
 .loadpath
 
 # maven ignore
-target/
 *.jar
-*.war
 *.zip
 *.tar
 *.tar.gz
@@ -49,8 +46,6 @@ logs/
 *.cache
 *.diff
 *.patch
-*.tmp
-*.swp
 
 # system ignore
 .DS_Store
