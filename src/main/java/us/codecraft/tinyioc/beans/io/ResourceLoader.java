@@ -1,22 +1,22 @@
 package us.codecraft.tinyioc.beans.io;
 
-import java.net.URL;
-
 /**
- * 资源加载类
- * 通过getResource方法获取一个Resource对象，是获取Resouce的主要途径
+ * us.codecraft.tinyioc.beans.io
+ * 资源加载类接口
  *
- * 注： 这里在设计上有一定的问题，
- * ResourceLoader 直接返回了一个 UrlResource，
- * 更好的方法是声明一个 ResourceLoader 接口，
- * 再实现一个 UrlResourceLoader 类用于加载 UrlResource。
- *
- * @author yihua.huang@dianping.com
+ * @author muzhi
+ * 18/4/25
  */
-public class ResourceLoader {
+public interface ResourceLoader {
 
-    public Resource getResource(String location){
-        URL resource = this.getClass().getClassLoader().getResource(location);
-        return new UrlResource(resource);
-    }
+	/**
+	 * Return a Resource handle for the specified resource location.
+	 * <p>The handle should always be a reusable resource descriptor,
+	 * allowing for multiple {@link Resource#getInputStream()} calls.
+	 * <p>
+	 * @param location the resource location
+	 * @return a corresponding Resource handle (never {@code null})
+	 */
+	Resource getResource(String location);
+
 }

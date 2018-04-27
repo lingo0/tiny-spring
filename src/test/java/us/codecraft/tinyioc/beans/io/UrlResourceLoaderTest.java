@@ -9,11 +9,11 @@ import java.io.InputStream;
 /**
  * @author yihua.huang@dianping.com
  */
-public class ResourceLoaderTest {
+public class UrlResourceLoaderTest {
 
 	@Test
 	public void test() throws IOException {
-		ResourceLoader resourceLoader = new ResourceLoader();
+		UrlResourceLoader resourceLoader = new UrlResourceLoader();
         Resource resource = resourceLoader.getResource("tinyioc.xml");
         InputStream inputStream = resource.getInputStream();
         Assert.assertNotNull(inputStream);

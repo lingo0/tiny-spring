@@ -3,7 +3,7 @@ package us.codecraft.tinyioc.context;
 import us.codecraft.tinyioc.beans.BeanDefinition;
 import us.codecraft.tinyioc.beans.factory.AbstractBeanFactory;
 import us.codecraft.tinyioc.beans.factory.AutowireCapableBeanFactory;
-import us.codecraft.tinyioc.beans.io.ResourceLoader;
+import us.codecraft.tinyioc.beans.io.UrlResourceLoader;
 import us.codecraft.tinyioc.beans.xml.XmlBeanDefinitionReader;
 
 import java.util.Map;
@@ -31,7 +31,7 @@ public class ClassPathXmlApplicationContext extends AbstractApplicationContext {
 
 	@Override
 	protected void loadBeanDefinitions(AbstractBeanFactory beanFactory) throws Exception {
-		XmlBeanDefinitionReader xmlBeanDefinitionReader = new XmlBeanDefinitionReader(new ResourceLoader());
+		XmlBeanDefinitionReader xmlBeanDefinitionReader = new XmlBeanDefinitionReader(new UrlResourceLoader());
 		xmlBeanDefinitionReader.loadBeanDefinitions(configLocation);
 		for (Map.Entry<String, BeanDefinition> beanDefinitionEntry : xmlBeanDefinitionReader.getRegistry().entrySet()) {
 			beanFactory.registerBeanDefinition(beanDefinitionEntry.getKey(), beanDefinitionEntry.getValue());

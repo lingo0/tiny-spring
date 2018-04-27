@@ -8,7 +8,7 @@ import us.codecraft.tinyioc.BeanReference;
 import us.codecraft.tinyioc.beans.AbstractBeanDefinitionReader;
 import us.codecraft.tinyioc.beans.BeanDefinition;
 import us.codecraft.tinyioc.beans.PropertyValue;
-import us.codecraft.tinyioc.beans.io.ResourceLoader;
+import us.codecraft.tinyioc.beans.io.UrlResourceLoader;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -21,7 +21,7 @@ import java.io.InputStream;
  */
 public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
 
-	public XmlBeanDefinitionReader(ResourceLoader resourceLoader) {
+	public XmlBeanDefinitionReader(UrlResourceLoader resourceLoader) {
 		super(resourceLoader);
 	}
 
