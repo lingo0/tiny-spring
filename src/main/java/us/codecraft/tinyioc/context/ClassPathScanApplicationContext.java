@@ -49,7 +49,7 @@ public class ClassPathScanApplicationContext extends AbstractApplicationContext 
 			beanDefinition.setBeanClassName(className);
 			beanDefinition.setBeanClass(cl);
 
-			// 注入属性
+			// 注入属性 默认使用@Resource
 			Field[] beanFields = cl.getDeclaredFields();
 			for (Field beanField : beanFields) {
 				if (beanField.isAnnotationPresent(Resource.class)) {
