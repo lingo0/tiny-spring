@@ -14,7 +14,9 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * us.codecraft.tinyioc.context
+ * 从包路径扫描和加载的具体实现类。
+ * 内部通过扫描对应的包来获取类信息并解析成BeanDefinition。
+ * 然后将其保存到内置的 BeanFactory 中。
  *
  * @author muzhi
  * 18/4/27
